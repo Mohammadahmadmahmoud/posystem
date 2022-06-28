@@ -1,0 +1,31 @@
+{% extends "authentication/base.html" %}
+
+{% load i18n %}
+
+{% block title %}Shops{% endblock %}
+
+{% block content %}
+<h1> {{shop.name}}</h1>
+{% get_current_language as LANGUAGE_CODE %}  
+{% if LANGUAGE_CODE == 'ar' %}
+<h2>{% trans "My Name Is Khan" %}</h2>
+{% else %}
+<h2> My Name Is Khaan </h2>
+{% endif %}
+ {% for shop in shops %}
+ <div class="row">
+   <div class="card" style="width: 18rem;">
+      <img src="{{shop.logo}}" class="card-img-top" alt="{{shop.name}}">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">{{shop.description}}</p>
+      </div>
+  
+      <div class="card-body">
+            <a href="/sellers/shop/{{shop.shop_id}}" class="card-link">Vedio Items</a>
+      </div>
+    </div>
+ </div>
+
+ {% endfor %}
+{% endblock %}
